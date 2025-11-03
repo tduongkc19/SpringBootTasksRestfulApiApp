@@ -5,10 +5,10 @@ Author: Tommy Duong
 Contact: tommy.duong.kc@gmail.com
 Date: 11/2025
 
-By following these steps, we have created a simple RESTful API 
-using Spring Boot and Spring MVC. This setup provides a strong 
-foundation for developing more complex APIs and adding additional 
-features as needed.
+A simple yet highly scalable and robust RESTful API built with 
+Spring Boot and Spring MVC. This setup provides a solid foundation 
+for developing more complex APIs and integrating additional features 
+as needed.
 
 
 Backend Tech Stack:
