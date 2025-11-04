@@ -3,7 +3,6 @@
 ##################--Dev Documentation--#######################
 Author: Tommy Duong
 Contact: tommy.duong.kc@gmail.com
-Date: 11/2025
 
 A simple yet highly scalable and robust RESTful API built with 
 Spring Boot and Spring MVC. This setup provides a solid foundation 
@@ -14,25 +13,30 @@ as needed.
 Backend Tech Stack:
 Spring Boot 3.5.6
 Java Version 21
-RxJS 7
-Bootstrap 4
 
 Dependencies:
 Spring Web
 Spring Boot DevTools
 Spring Data JPA
+Spring Security
 Spring Framework
 Spring Data Redis Version:7.4.6
-Hibernate Validator (The Bean Validator)
+Hibernate Validator
 Apache Commons Lang & Google Guava
 JUnit 5 & Mockito
 MySQL Driver
 MapStruct
+JSWT(JSON Web Token)
+Okhttp
 Lombok
+SLF4J
 Log4j
+Guava
 
 Frontend Tech Stack:
 Angular 20
+RxJS 7
+Bootstrap 4
 
 ======================= API Testing  ===========================
 Prerequisites:
@@ -67,10 +71,7 @@ Checking for cache example.
 127.0.0.1:6379> keys *
 1) "task::69"
 2) "task::75"
-3) "task::162"
-4) "task::55"
-5) "task::74"
-6) "task::62"
+...
 7) "task::83"
 8) "task::84"
 
