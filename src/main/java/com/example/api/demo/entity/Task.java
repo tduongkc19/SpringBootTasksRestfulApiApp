@@ -45,7 +45,7 @@ public class Task implements Serializable {
 	
     // Task description field with validation
     @NotEmpty(message = "Task description is required.")
-    @Size(min = 500, message = "Description should have at least 500 characters.")
+    @Size(min = 100, message = "Description should have at least 100 characters.")
 	private String taskDescription = "";
 	
     // Task status field with default 'Pending'.
