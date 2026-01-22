@@ -5,10 +5,13 @@ package com.example.api.demo.entity;
 
 import java.util.Objects;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -26,7 +29,9 @@ import lombok.NoArgsConstructor;
  * 
  */
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {
+	    @Index(name = "idx_username", columnList = "username")
+	})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,10 +53,37 @@ public class User {
     @Email(message = "Email should be valid")
     private String userEmail;
 
-    @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Phone number must be valid")
+    //@NotBlank(message = "Phone number is required")
+    //@Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Phone number must be valid")
     private String userPhone;
     
+    
+	/**
+	 * Default Constructor
+	 */
+	public User() {
+		super();
+	}
+	
+	/**
+	 * @param id
+	 * @param username
+	 * @param password
+	 * @param userEmail
+	 * @param userPhone
+	 */
+	public User(Long id,
+			@NotBlank(message = "Username is required") @Size(min = 3, max = 20, message = "Username must be between 3 and 20 characters") String username,
+			@NotBlank(message = "Password is required") @Size(min = 8, message = "Password must be at least 8 characters") String password,
+			@NotBlank(message = "Email is required") @Email(message = "Email should be valid") String userEmail,
+			String userPhone) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.userEmail = userEmail;
+		this.userPhone = userPhone;
+	}
 	/**
 	 * @return the id
 	 */

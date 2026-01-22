@@ -18,7 +18,7 @@ import com.example.api.demo.repository.UserRepository;
  * @author Tommy Duong, tommy.duong.kc@gmail.com
  * @apiNote RESTful API using Spring Boot and Spring MVC.
  * @category API
- * @implNote 
+ * @implNote Perform a search in the database and locate the user by username.
  */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

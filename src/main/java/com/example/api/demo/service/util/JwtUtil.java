@@ -23,6 +23,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 public class JwtUtil {
 	
+	// Replace "secret" with actual secret key.
 	private String SECRET_KEY = "secret";
 
     public String extractUserName(String token) {

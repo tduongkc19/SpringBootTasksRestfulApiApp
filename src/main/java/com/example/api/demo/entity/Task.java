@@ -8,10 +8,13 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -26,7 +29,9 @@ import lombok.Data;
  * 
  */
 @Entity
-@Table(name = "tasks")
+@Table(name = "tasks", indexes = {
+	    @Index(name = "idx_title", columnList = "taskTitle")
+	})
 @Data
 public class Task implements Serializable {
 	
@@ -39,6 +44,7 @@ public class Task implements Serializable {
 	private Long taskId;
     
     // Title name field with validation
+    @Indexed
     @NotEmpty(message = "Task title is required.")
     @Size(min = 10, message = "Title name should have at least 10 characters.")
 	private String taskTitle = "";

@@ -39,17 +39,25 @@ public class SecurityConfig {
 	
 	private Logger logger = LogManager.getLogger(SecurityConfig.class);
 	
-	// Retrieves configuration values from the property file.
+	// Retrieves value from the property file.
 	@Value("${spring.profiles.active}")
 	private String profileEnv;
-	
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final JwtUtil jwtUtil;
+    
 
-    @Bean
+    /**
+	 * @param customUserDetailsService
+	 * @param jwtUtil
+	 */
+	public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtUtil jwtUtil) {
+		super();
+		this.customUserDetailsService = customUserDetailsService;
+		this.jwtUtil = jwtUtil;
+	}
+
+	@Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -66,10 +74,9 @@ public class SecurityConfig {
 
         // Enabled Spring Security
         if (profileEnv.contains("prod")) {
-            http
-                .csrf(csrf -> csrf.disable())
+            http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/v1/register", "/api/v1/login").permitAll()
+                    .requestMatchers("/register", "/login").permitAll()
                     .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
@@ -85,7 +92,7 @@ public class SecurityConfig {
                     .anyRequest().permitAll()
                 );
         }
-
+        
         return http.build();
     }
 

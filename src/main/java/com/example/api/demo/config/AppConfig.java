@@ -3,8 +3,11 @@
  */
 package com.example.api.demo.config;
 
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import com.example.api.demo.converter.EntityDtoConverter;
 import com.example.api.demo.service.util.JwtUtil;
@@ -14,7 +17,7 @@ import com.example.api.demo.service.util.JwtUtil;
  * @apiNote RESTful API using Spring Boot and Spring MVC.
  * @category API
  * @implNote The AppConfig class is used to instantiate beans 
- * in the Spring Boot application.
+ * in a Spring Boot application.
  * 
  */
 @Configuration
@@ -29,5 +32,17 @@ public class AppConfig {
        return new JwtUtil();
    }
    
+   
+   @Bean
+   public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+       RedisTemplate<String, Object> template = new RedisTemplate<>();
+       template.setConnectionFactory(connectionFactory);
+       return template;
+   }
+
+   @Bean
+   public RestTemplateBuilder restTemplateBuilder() {
+       return new RestTemplateBuilder();
+   }
    
 }

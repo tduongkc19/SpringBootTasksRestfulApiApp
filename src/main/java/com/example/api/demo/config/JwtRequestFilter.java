@@ -29,13 +29,10 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    @Autowired
-    private JwtUtil jwtUtil;
-
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-
-
+    private final JwtUtil jwtUtil;
+    private final CustomUserDetailsService customUserDetailsService;
+    
+   
 	/**
 	 * @param jwtUtil
 	 * @param customUserDetailsService

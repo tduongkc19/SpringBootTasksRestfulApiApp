@@ -30,9 +30,8 @@ import com.example.api.demo.repository.TasksRepository;
  * @author Tommy Duong, tommy.duong.kc@gmail.com
  * @apiNote RESTful API using Spring Boot and Spring MVC.
  * @category API
- * @implNote Encapsulates the business logic. Service class 
- * for business logic related to Tasks entity.
- * 
+ * @implNote A service class that encapsulates the business 
+ * logic related to the Task entity.
  * 
  */
 @Service
@@ -207,7 +206,6 @@ public class TasksService implements ISourceTargetMapper, IHttpClientService{
 		    responseBody = response.body().string();
 		    System.out.println(responseBody);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.info("TasksService:getHttpClientConnection().IOException: " + e);
 			e.printStackTrace();
 		}
