@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.api.demo.dto.TaskDto;
 import com.example.api.demo.entity.Task;
-import com.example.api.demo.service.TasksService;
+import com.example.api.demo.service.impl.TasksServiceImpl;
 import com.google.common.base.Preconditions;
 
 import jakarta.validation.Valid;
@@ -49,10 +49,8 @@ public class TasksController {
 	
 	private final String defaultTaskStatus = "Pending";
 	
-	private List<Task> newTasks = new ArrayList<>();
-	
 	@Autowired
-	private TasksService tasksService;
+	private TasksServiceImpl tasksService;
 	
 	// Get tasks in pages.
     @GetMapping("/task-pages")
@@ -81,22 +79,15 @@ public class TasksController {
 	@PostMapping("/bulk")
 	public ResponseEntity<List<Task>> createAllTasks(@Valid @RequestBody List<Task> tasks) {
 		logger.info("TasksController:createAllTasks().execution started...");
-		// Clear the list to add new task.
-		this.newTasks.clear();
-		// Google Guava: Argument validation
-		this.newTasks = Preconditions.checkNotNull(tasks, "Task list must not be null!");
-		for(Task task:tasks) {
-	    	if(StringUtils.isEmpty(task.getTaskStatus())) {
-	    		task.setTaskStatus(defaultTaskStatus);
-	    	}
-	    	// Add new modified task to the list.
-	    	this.newTasks.add(task);
-		}
+	    List<Task> newTasks = tasks.stream()
+	            .peek(task -> {
+	                if (StringUtils.isEmpty(task.getTaskStatus())) {
+	                    task.setTaskStatus(defaultTaskStatus);
+	                }
+	            })
+	            .toList();
 
-		// Save all task to the database and assign to savedTasks variable.
-	    List<Task> savedTasks = tasksService.createAllTasks(this.newTasks);
-	    // Return savedTasks task to the response.
-	    return ResponseEntity.ok(savedTasks);
+	        return ResponseEntity.ok(tasksService.createAllTasks(newTasks));
 	}
 
 	
@@ -166,8 +157,5 @@ public class TasksController {
         return ResponseEntity.ok("Items deleted successfully");
     }
     
-
-    
-
     
 }

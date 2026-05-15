@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.api.demo.service.CustomUserDetailsService;
+import com.example.api.demo.service.impl.CustomUserDetailsServiceImpl;
 import com.example.api.demo.service.util.JwtUtil;
 
 import jakarta.servlet.FilterChain;
@@ -30,14 +30,14 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
-    private final CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsServiceImpl customUserDetailsService;
     
    
 	/**
 	 * @param jwtUtil
 	 * @param customUserDetailsService
 	 */
-	public JwtRequestFilter(JwtUtil jwtUtil, CustomUserDetailsService customUserDetailsService) {
+	public JwtRequestFilter(JwtUtil jwtUtil, CustomUserDetailsServiceImpl customUserDetailsService) {
 		super();
 		this.jwtUtil = jwtUtil;
 		this.customUserDetailsService = customUserDetailsService;

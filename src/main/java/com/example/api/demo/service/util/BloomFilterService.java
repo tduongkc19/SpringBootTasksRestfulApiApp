@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.example.api.demo.controller.AuthController;
+import com.example.api.demo.controller.AuthControllerMfa;
 
 /**
  * @author Tommy Duong, tommy.duong.kc@gmail.com

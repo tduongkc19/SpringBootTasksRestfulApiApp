@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.api.demo.service;
+package com.example.api.demo.service.impl;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ import com.example.api.demo.repository.UserRepository;
  * @implNote Perform a search in the database and locate the user by username.
  */
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
     private UserRepository userRepository;
 

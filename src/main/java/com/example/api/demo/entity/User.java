@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
  * 
  */
 @Entity
-@Table(name = "users", indexes = {
+@Table(name = "user", indexes = {
 	    @Index(name = "idx_username", columnList = "username")
 	})
 @Data
@@ -58,32 +58,7 @@ public class User {
     private String userPhone;
     
     
-	/**
-	 * Default Constructor
-	 */
-	public User() {
-		super();
-	}
-	
-	/**
-	 * @param id
-	 * @param username
-	 * @param password
-	 * @param userEmail
-	 * @param userPhone
-	 */
-	public User(Long id,
-			@NotBlank(message = "Username is required") @Size(min = 3, max = 20, message = "Username must be between 3 and 20 characters") String username,
-			@NotBlank(message = "Password is required") @Size(min = 8, message = "Password must be at least 8 characters") String password,
-			@NotBlank(message = "Email is required") @Email(message = "Email should be valid") String userEmail,
-			String userPhone) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.userEmail = userEmail;
-		this.userPhone = userPhone;
-	}
+
 	/**
 	 * @return the id
 	 */

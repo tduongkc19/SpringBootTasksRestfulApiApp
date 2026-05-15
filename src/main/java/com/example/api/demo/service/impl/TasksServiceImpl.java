@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.api.demo.service;
+package com.example.api.demo.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +25,7 @@ import com.example.api.demo.dto.TaskDto;
 import com.example.api.demo.entity.Task;
 import com.example.api.demo.exception.ResourceNotFoundException;
 import com.example.api.demo.repository.TasksRepository;
+import com.example.api.demo.service.IHttpClientService;
 
 /**
  * @author Tommy Duong, tommy.duong.kc@gmail.com
@@ -35,9 +36,9 @@ import com.example.api.demo.repository.TasksRepository;
  * 
  */
 @Service
-public class TasksService implements ISourceTargetMapper, IHttpClientService{
+public class TasksServiceImpl implements ISourceTargetMapper, IHttpClientService{
 	
-	Logger logger = LogManager.getLogger(TasksService.class);
+	Logger logger = LogManager.getLogger(TasksServiceImpl.class);
 	
 	private final TasksRepository tasksRepository;
 	//private final EntityDtoConverter entityDtoConverter;
@@ -47,7 +48,7 @@ public class TasksService implements ISourceTargetMapper, IHttpClientService{
 	 * @param tasksRepository
 	 * @param entityDtoConverter
 	 */
-	public TasksService(TasksRepository tasksRepository, EntityDtoConverter entityDtoConverter) {
+	public TasksServiceImpl(TasksRepository tasksRepository, EntityDtoConverter entityDtoConverter) {
 		super();
 		this.tasksRepository = tasksRepository;
 		//this.entityDtoConverter = entityDtoConverter;

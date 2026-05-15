@@ -5,7 +5,7 @@ package com.example.api.demo.service;
 
 import org.apache.catalina.User;
 
-import com.anbu.mfaserver.model.EmailConfirmationToken;
+import com.example.api.demo.entity.EmailConfirmationToken;
 
 import jakarta.mail.MessagingException;
 

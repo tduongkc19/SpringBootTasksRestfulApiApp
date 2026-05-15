@@ -19,7 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.example.api.demo.entity.Task;
 import com.example.api.demo.repository.TasksRepository;
-import com.example.api.demo.service.TasksService;
+import com.example.api.demo.service.impl.TasksServiceImpl;
 
 /**
  * 
@@ -33,7 +33,7 @@ public class TaskServiceTest {
 	private TasksRepository tasksRepository; // Mock the dependency
 
     @InjectMocks
-    private TasksService tasksService; // Inject mocks into this
+    private TasksServiceImpl tasksService; // Inject mocks into this
 
     @Test
     void shouldReturnTaskWhenFound() {

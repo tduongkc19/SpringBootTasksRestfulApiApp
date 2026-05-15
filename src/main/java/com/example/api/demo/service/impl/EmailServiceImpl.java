@@ -1,33 +1,27 @@
-/**
- * 
- */
-package com.example.api.demo.service;
+package com.example.api.demo.service.impl;
 
-import org.apache.catalina.User;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.anbu.mfaserver.model.EmailConfirmationToken;
+import com.example.api.demo.entity.EmailConfirmationToken;
+import com.example.api.demo.entity.User;
+import com.example.api.demo.service.EmailService;
 
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-
-/**
- * 
- */
 @Service
 public class EmailServiceImpl implements EmailService {
-	
+
     private final JavaMailSender sender;
 
     public EmailServiceImpl(JavaMailSender sender) {
         this.sender = sender;
     }
 
-	@Override
-	public void sendConfirmationEmail(EmailConfirmationToken emailConfirmationToken) throws MessagingException {
-	    //MIME - HTML message
+    @Override
+    public void sendConfirmationEmail(EmailConfirmationToken emailConfirmationToken) throws MessagingException {
+        //MIME - HTML message
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(emailConfirmationToken.getUser().getUsername());
@@ -44,9 +38,9 @@ public class EmailServiceImpl implements EmailService {
                         "</html>"
                 , true);
 
-        sender.send(message);
-	}
-	
+        //sender.send(message);
+    }
+
     private String generateConfirmationLink(String token){
         return "<a href=http://localhost:8080/confirm-email?token="+token+">Confirm Email</a>";
     }
@@ -58,9 +52,8 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
-	public void sendWelcomeEmail(com.example.api.demo.entity.User savedUser) {
+	public void sendWelcomeEmail(org.apache.catalina.User savedUser) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

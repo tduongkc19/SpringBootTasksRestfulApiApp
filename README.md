@@ -4,11 +4,7 @@
 <br>
 <strong>Contact:</strong> tommy.duong.kc@gmail.com
 
-A simple yet highly scalable and robust RESTful API built with 
-Spring Boot and Spring MVC. This setup provides a solid foundation 
-for developing more complex APIs and integrating additional features 
-as needed.
-
+A simple yet highly scalable and robust RESTful API built with Spring Boot and Spring MVC. This setup provides a solid foundation for developing more complex APIs and integrating additional features as needed. It can be easily customized and optimized to meet your specific requirements for a production-ready environment.
 
 <strong>Backend Tech Stack:</strong><br>
 Spring Boot 3.5.6<br>
@@ -47,8 +43,9 @@ Bootstrap 4
 
 <strong>Prerequisites:</strong><br>
 
-<strong>Step-1: Install Docker & Redis</strong>
+<strong>Step-1: Install MySQL Database, Docker, and Redis Server.</strong>
 
+0. Create a database table named devdb
 1. Start Spring Boot Application
 2. Start Docker
 3. Start the Redis Server 

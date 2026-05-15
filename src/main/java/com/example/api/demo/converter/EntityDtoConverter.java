@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.example.api.demo.dto.TaskDto;
 import com.example.api.demo.entity.Task;
-import com.example.api.demo.service.TasksService;
+import com.example.api.demo.service.impl.TasksServiceImpl;
 
 /**
  * @author Tommy Duong, tommy.duong.kc@gmail.com
@@ -19,7 +19,7 @@ import com.example.api.demo.service.TasksService;
  */
 public final class EntityDtoConverter {
 	
-	Logger logger = LogManager.getLogger(TasksService.class);
+	Logger logger = LogManager.getLogger(TasksServiceImpl.class);
 
 	public EntityDtoConverter() {
 	}

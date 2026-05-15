@@ -27,10 +27,20 @@ public class UsernameController {
 	
 	private Logger logger = LogManager.getLogger(UsernameController.class);
 
-    @Autowired
+   // Injecting the BloomFilterService dependency to manage the Bloom filter operations.
     private BloomFilterService bloomFilterService;
+    
 
-    /**
+	/**
+	 * Setter injection for the BloomFilterService dependency.
+	 * @param bloomFilterService the bloomFilterService to set
+	 */
+    @Autowired
+	public void setBloomFilterService(BloomFilterService bloomFilterService) {
+		this.bloomFilterService = bloomFilterService;
+	}
+
+	/**
      * Adds a username to the Bloom filter.
      * Example: POST /usernames/add/john123
      */

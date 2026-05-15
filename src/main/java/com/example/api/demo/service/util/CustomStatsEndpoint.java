@@ -10,8 +10,8 @@ import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.example.api.demo.service.TasksService;
-import com.example.api.demo.service.UserServiceImpl;
+import com.example.api.demo.service.impl.TasksServiceImpl;
+import com.example.api.demo.service.impl.UserServiceMfaImpl;
 
 /**
  * @author Tommy Duong, tommy.duong.kc@gmail.com
@@ -25,12 +25,12 @@ import com.example.api.demo.service.UserServiceImpl;
 @Endpoint(id = "customStats")
 public class CustomStatsEndpoint {
 	
-	private final UserServiceImpl userService;
-    private final TasksService tasksService;
+	private final UserServiceMfaImpl userService;
+    private final TasksServiceImpl tasksService;
     private final Environment environment;
 	
 	// Example
-    public CustomStatsEndpoint(UserServiceImpl userService, TasksService tasksService, Environment environment) {
+    public CustomStatsEndpoint(UserServiceMfaImpl userService, TasksServiceImpl tasksService, Environment environment) {
         this.userService = userService;
         this.tasksService = tasksService;
         this.environment = environment;
